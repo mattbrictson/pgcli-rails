@@ -13,3 +13,4 @@ pgcli-rails is in a pre-1.0 state. This means that its APIs and behavior are sub
 * Initial release
 
 [Semver]: http://semver.org
+[Unreleased]: https://github.com/mattbrictson/pgcli-rails/compare/v0.1.0...HEAD
