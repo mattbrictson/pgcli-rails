@@ -8,6 +8,10 @@ pgcli-rails is in a pre-1.0 state. This means that its APIs and behavior are sub
 
 * Your contribution here!
 
+## [0.2.1][] (2016-07-18)
+
+* Minor change to gemspec summary
+
 ## [0.2.0][] (2016-07-18)
 
 * Rewrite as a Rake task instead of a monkey patch
@@ -18,5 +22,6 @@ pgcli-rails is in a pre-1.0 state. This means that its APIs and behavior are sub
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/pgcli-rails/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/pgcli-rails/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/mattbrictson/pgcli-rails/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/mattbrictson/pgcli-rails/compare/v0.1.0...v0.2.0
