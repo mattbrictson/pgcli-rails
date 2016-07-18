@@ -2,16 +2,22 @@
 
 [![Gem Version](https://badge.fury.io/rb/pgcli-rails.svg)](http://badge.fury.io/rb/pgcli-rails)
 
-Wouldn't it be great if `rails dbconsole` used [pgcli][] instead of psql?
+[pgcli][] is a command-line interface for PostgreSQL that offers many improvements over `psql`, like auto-completion and syntax highlighting. Wouldn't it be nice to have a convenient way to use `pgcli` with your Rails app?
+
+That's where the pgcli-rails gem comes in. It adds a `pgcli` Rake task to your Rails app. Use it in place of `rails dbconsole`.
+
+# Usage
+
+Add the gem to your Gemfile and run `bundle install`:
 
 ```ruby
-gem "pgcli-rails", groups: %w(development test)
+gem "pgcli-rails"
 ```
 
-Now it does.
+Running the `pgcli` Rake task automatically uses your `database.yml` to launch pgcli with the correct connection options:
 
 ```
-$ rails dbconsole
+$ bin/rake pgcli
 Version: 1.0.0
 Chat: https://gitter.im/dbcli/pgcli
 Mail: https://groups.google.com/forum/#!forum/pgcli
@@ -23,6 +29,16 @@ my_app_development>
  [F2] Smart Completion: ON  [F3] Multiline: OFF  [F4] Emacs-mode
 ```
 
+Other ways to use it:
+
+```
+# Rails 5 also supports running Rake tasks via the rails command
+bin/rails pgcli
+
+# Connect to the test database
+RAILS_ENV=test bin/rake pgcli
+```
+
 ## Requirements
 
 * Rails 4.2+ using PostgreSQL
@@ -31,21 +47,11 @@ my_app_development>
 
 ## How it works
 
-pgcli-rails is a monkey patch. Using a `Rails::Railtie` callback, it hooks into the Rails load process and patches the `Rails::DBConsole` class to execute `pgcli` instead of `psql`. All you need to do is require the pgcli-rails gem by placing it in your Gemfile.
+pgcli-rails is simply a Rake task that reuses the existing `Rails::DBConsole` command class provided by Rails. It subclasses DBConsole to execute `pgcli` instead of `psql`. All you need to do is require the pgcli-rails gem by placing it in your Gemfile.
 
 ## Configuration
 
-There is no configuration to speak of, but you can control which environment(s) use `pgcli` by specifying the appropriate group in the Gemfile.
-
-```ruby
-# Use pgcli in *all* environments (including production)
-gem "pgcli-rails"
-```
-
-```ruby
-# Use pgcli only in development and test environments
-gem "pgcli-rails", groups: %w(development test)
-```
+There is no configuration. Like `rails dbconsole`, it simply uses your ActiveRecord database connection as specified in `database.yml`.
 
 ## Roadmap
 
