@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Matt Brictson"]
   spec.email         = ["opensource@mattbrictson.com"]
 
-  spec.summary       = "Patches Rails dbconsole to use pgcli instead of psql"
+  spec.summary       = "Replaces the Rails PostgreSQL dbconsole with the much nicer pgcli"
   spec.homepage      = "https://github.com/mattbrictson/pgcli-rails"
   spec.license       = "MIT"
 
