@@ -1,4 +1,8 @@
-require "rails/commands/dbconsole"
+begin
+  require "rails/commands/dbconsole"
+rescue LoadError
+  require "rails/commands/dbconsole/dbconsole_command"
+end
 
 module Pgcli
   module Rails
