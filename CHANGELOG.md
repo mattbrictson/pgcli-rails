@@ -7,6 +7,7 @@ pgcli-rails is in a pre-1.0 state. This means that its APIs and behavior are sub
 ## [Unreleased][]
 
 * Your contribution here!
+* [#3](https://github.com/mattbrictson/pgcli-rails/pull/3): Add Rails 5.1 support - [@nachokb](https://github.com/nachokb)
 
 ## [0.2.1][] (2016-07-18)
 
