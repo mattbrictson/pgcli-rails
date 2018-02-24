@@ -7,6 +7,9 @@ pgcli-rails is in a pre-1.0 state. This means that its APIs and behavior are sub
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.3.0][] (2018-02-24)
+
 * [#3](https://github.com/mattbrictson/pgcli-rails/pull/3): Add Rails 5.1 support - [@nachokb](https://github.com/nachokb)
 
 ## [0.2.1][] (2016-07-18)
@@ -23,6 +26,7 @@ pgcli-rails is in a pre-1.0 state. This means that its APIs and behavior are sub
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/pgcli-rails/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/mattbrictson/pgcli-rails/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/mattbrictson/pgcli-rails/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/mattbrictson/pgcli-rails/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/mattbrictson/pgcli-rails/compare/v0.1.0...v0.2.0
