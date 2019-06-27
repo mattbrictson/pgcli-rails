@@ -19,6 +19,9 @@ Metrics/ClassLength:
   Exclude:
     - "test/**/*"
 
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: optional
+
 Style/BarePercentLiterals:
   EnforcedStyle: percent_q
 
