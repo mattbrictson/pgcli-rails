@@ -42,7 +42,7 @@ RAILS_ENV=test bin/rake pgcli
 ## Requirements
 
 * Rails 4.2+ using PostgreSQL
-* Ruby 1.9.3+
+* Ruby 2.4.0+
 * [pgcli][] (`brew install pgcli` to install on macOS)
 
 ## How it works

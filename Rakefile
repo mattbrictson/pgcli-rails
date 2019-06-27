@@ -2,7 +2,7 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 require "rubocop/rake_task"
 
-task default: [:test, :rubocop]
+task default: %i[test rubocop]
 
 RuboCop::RakeTask.new
 
@@ -29,6 +29,7 @@ namespace :bump do
     lowest = RubyVersions.lowest_supported
     lowest_minor = RubyVersions.lowest_supported_minor
 
+    replace_in_file "README.md", /Ruby (\d\.\d\.\d)\+/ => lowest
     replace_in_file "pgcli-rails.gemspec",
                     /ruby_version = ">= (.*)"/ => lowest
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
