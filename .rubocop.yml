@@ -1,7 +1,11 @@
 AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
   TargetRubyVersion: 1.9
   Exclude:
     - "*.gemspec"
+    - "tmp/**/*"
+    - "vendor/**/*"
 
 Metrics/AbcSize:
   Exclude:
@@ -28,7 +32,7 @@ Style/DoubleNegation:
   Enabled: false
 
 Style/HashSyntax:
-  EnforcedStyle: hash_rockets
+  EnforcedStyle: ruby19
 
 Style/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
