@@ -21,7 +21,7 @@ task bump: %w[bump:bundler bump:ruby bump:year]
 
 namespace :bump do
   task :bundler do
-    version = Gemfile.bundler_version
+    version = Gem.latest_version_for("bundler").to_s
     replace_in_file ".travis.yml", /bundler -v (\S+)/ => version
   end
 
@@ -60,20 +60,6 @@ def replace_in_file(path, replacements)
   IO.write(path, contents) if contents != orig_contents
 end
 
-module Gemfile
-  class << self
-    def bundler_version
-      lock_file[/BUNDLED WITH\n   (\S+)$/, 1]
-    end
-
-    private
-
-    def lock_file
-      @_lock_file ||= IO.read("Gemfile.lock")
-    end
-  end
-end
-
 module RubyVersions
   class << self
     def lowest_supported
@@ -95,13 +81,13 @@ module RubyVersions
 
     private
 
-    # rubocop:disable Metrics/LineLength
     def versions
       @_versions ||= begin
-        yaml = open("https://raw.githubusercontent.com/ruby/www.ruby-lang.org/master/_data/downloads.yml")
+        yaml = URI.open(
+          "https://raw.githubusercontent.com/ruby/www.ruby-lang.org/master/_data/downloads.yml"
+        )
         YAML.safe_load(yaml, symbolize_names: true)
       end
     end
-    # rubocop:enable Metrics/LineLength
   end
 end
