@@ -1,0 +1,16 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "06:00"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: bundler
+    versions:
+    - "> 1.12"
+  - dependency-name: rubocop
+    versions:
+    - "> 0.48.1"
