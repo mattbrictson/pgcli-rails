@@ -1,5 +1,4 @@
-# coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "pgcli/rails/version"
 
@@ -23,8 +22,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "railties", ">= 4.2.0"
 
   spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "minitest-reporters", "~> 1.1"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rubocop", "0.92.0"
 end
