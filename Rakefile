@@ -12,10 +12,40 @@ Rake::TestTask.new("test") do |t|
   t.test_files = FileList["test/**/*_test.rb"]
 end
 
+# == "rake release" enhancements ==============================================
+
 Rake::Task["release"].enhance do
   puts "Don't forget to publish the release on GitHub!"
   system "open https://github.com/mattbrictson/pgcli-rails/releases"
 end
+
+task :disable_overcommit do
+  ENV["OVERCOMMIT_DISABLE"] = "1"
+end
+
+task build: :disable_overcommit
+
+task :verify_gemspec_files do
+  git_files = `git ls-files -z`.split("\x0")
+  gemspec_files = Gem::Specification.load("pgcli-rails.gemspec").files.sort
+  ignored_by_git = gemspec_files - git_files
+  next if ignored_by_git.empty?
+
+  raise <<~ERROR
+
+    The `spec.files` specified in pgcli-rails.gemspec include the following files
+    that are being ignored by git. Did you forget to add them to the repo? If
+    not, you may need to delete these files or modify the gemspec to ensure
+    that they are not included in the gem by mistake:
+
+    #{ignored_by_git.join("\n").gsub(/^/, '  ')}
+
+  ERROR
+end
+
+task build: :verify_gemspec_files
+
+# == "rake bump" tasks ========================================================
 
 task bump: %w[bump:bundler bump:ruby bump:year]
 
@@ -23,6 +53,7 @@ namespace :bump do
   task :bundler do
     version = Gem.latest_version_for("bundler").to_s
     replace_in_file ".travis.yml", /bundler -v (\S+)/ => version
+    replace_in_file "Gemfile.lock", /^BUNDLED WITH\n\s+([\d.]+)$/ => version
   end
 
   task :ruby do
@@ -30,8 +61,7 @@ namespace :bump do
     lowest_minor = RubyVersions.lowest_supported_minor
 
     replace_in_file "README.md", /Ruby (\d\.\d\.\d)\+/ => lowest
-    replace_in_file "pgcli-rails.gemspec",
-                    /ruby_version = ">= (.*)"/ => lowest
+    replace_in_file "pgcli-rails.gemspec", /ruby_version = .*">= (.*)"/ => lowest
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
 
     travis = YAML.safe_load(open(".travis.yml"))
@@ -85,9 +115,7 @@ module RubyVersions
 
     def versions
       @_versions ||= begin
-        yaml = URI.open(
-          "https://raw.githubusercontent.com/ruby/www.ruby-lang.org/master/_data/downloads.yml"
-        )
+        yaml = URI.open("https://raw.githubusercontent.com/ruby/www.ruby-lang.org/master/_data/downloads.yml")
         YAML.safe_load(yaml, symbolize_names: true)
       end
     end
