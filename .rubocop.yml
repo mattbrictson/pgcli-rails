@@ -1,5 +1,7 @@
 require:
+  - rubocop-minitest
   - rubocop-packaging
+  - rubocop-rake
 
 AllCops:
   DisplayCopNames: true
@@ -47,6 +49,9 @@ Naming/MemoizedInstanceVariableName:
   Enabled: false
 
 Naming/VariableNumber:
+  Enabled: false
+
+Rake/Desc:
   Enabled: false
 
 Style/BarePercentLiterals:
