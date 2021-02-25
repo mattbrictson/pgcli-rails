@@ -60,7 +60,6 @@ pgcli-rails is little more than a proof-of-concept at this point. Next steps are
 
 * Add tests
 * Use [Appraisal][] to test against multiple versions of Rails
-* Set up Travis CI
 
 If you have other ideas, open an issue on GitHub!
 
@@ -72,5 +71,5 @@ Code contributions are also welcome! Read [CONTRIBUTING.md](CONTRIBUTING.md) to 
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-[pgcli]: http://pgcli.com
+[pgcli]: https://www.pgcli.com/
 [Appraisal]: https://github.com/thoughtbot/appraisal
