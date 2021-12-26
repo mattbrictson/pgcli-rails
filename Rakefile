@@ -63,7 +63,7 @@ namespace :bump do
     latest_patches = RubyVersions.latest_supported_patches
 
     replace_in_file "README.md", /Ruby (\d\.\d\.\d)\+/ => lowest
-    replace_in_file "pgcli-rails.gemspec", /ruby_version = .*">= (.*)"/ => lowest
+    replace_in_file "pgcli-rails.gemspec", /ruby_version = ">= (.*)"/ => lowest
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
 
     replace_in_file "README.md", /Ruby (\d+\.\d+)/ => lowest_minor
