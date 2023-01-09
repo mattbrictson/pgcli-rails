@@ -6,6 +6,8 @@ agent:
     os_image: ubuntu2004
 global_job_config:
   env_vars:
+    - name: BUNDLE_CLEAN
+      value: "true"
     - name: BUNDLE_PATH
       value: "./vendor/bundle"
   prologue:
