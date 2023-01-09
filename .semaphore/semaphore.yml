@@ -13,10 +13,11 @@ blocks:
       prologue:
         commands:
           - checkout
-          - sem-version ruby ${SEM_RUBY:-3.2.0}
-          - cache restore
+          - export SEM_RUBY=${SEM_RUBY:-3.2.0}
+          - sem-version ruby $SEM_RUBY
+          - cache restore "gems-${SEM_RUBY}-${SEMAPHORE_GIT_BRANCH}-,gems-${SEM_RUBY}-main-"
           - bundle check || bundle install
-          - cache store
+          - cache store "gems-${SEM_RUBY}-${SEMAPHORE_GIT_BRANCH}-$(checksum Gemfile.lock)" vendor/bundle
       jobs:
         - name: Rubocop
           commands:
