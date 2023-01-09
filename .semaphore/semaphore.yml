@@ -18,12 +18,14 @@ global_job_config:
       - cache store "gems-${SEM_RUBY}-${SEMAPHORE_GIT_BRANCH}-$(checksum Gemfile.lock)" vendor/bundle
 blocks:
   - name: Rubocop
+    dependencies: []
     task:
       jobs:
         - name: Rubocop
           commands:
             - bundle exec rubocop
   - name: Test
+    dependencies: []
     task:
       jobs:
         - name: Test
