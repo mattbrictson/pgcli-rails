@@ -1,7 +1,7 @@
 # pgcli-rails
 
 [![Gem Version](https://badge.fury.io/rb/pgcli-rails.svg)](http://badge.fury.io/rb/pgcli-rails)
-[![Build Status](https://circleci.com/gh/mattbrictson/pgcli-rails/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/mattbrictson/pgcli-rails?branch=main)
+[![Build Status](https://mattbrictson.semaphoreci.com/badges/pgcli-rails/branches/main.svg?style=shields)](https://mattbrictson.semaphoreci.com/projects/pgcli-rails)
 
 [pgcli][] is a command-line interface for PostgreSQL that offers many improvements over `psql`, like auto-completion and syntax highlighting. Wouldn't it be nice to have a convenient way to use `pgcli` with your Rails app?
 
@@ -43,7 +43,7 @@ RAILS_ENV=test bin/rake pgcli
 ## Requirements
 
 * Rails 4.2+ using PostgreSQL
-* Ruby 2.6.0+
+* Ruby 2.6+
 * [pgcli][] (`brew install pgcli` to install on macOS)
 
 ## How it works
