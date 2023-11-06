@@ -2,7 +2,7 @@ module Pgcli
   module Rails
     module MonkeyPatch
       def self.apply!
-        if Rails.gem_version >= Gem::Version.new("7.1.0")
+        if ::Rails.gem_version >= Gem::Version.new("7.1.0")
           require "active_record/connection_adapters/postgresql_adapter"
           ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.singleton_class.prepend self
         else
