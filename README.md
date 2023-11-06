@@ -49,7 +49,7 @@ RAILS_ENV=test bin/rake pgcli
 
 ## How it works
 
-pgcli-rails is simply a Rake task that reuses the existing `Rails::DBConsole` command class provided by Rails. It subclasses DBConsole to execute `pgcli` instead of `psql`. All you need to do is require the pgcli-rails gem by placing it in your Gemfile.
+pgcli-rails is simply a Rake task that reuses the existing `Rails::DBConsole` command class provided by Rails. It applies a monkey patch so that `pgcli` is executed instead of `psql`. All you need to do is require the pgcli-rails gem by placing it in your Gemfile.
 
 ## Configuration
 
