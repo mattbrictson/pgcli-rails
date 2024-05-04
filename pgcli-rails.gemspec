@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary = "Replaces the Rails PostgreSQL dbconsole with the much nicer pgcli"
   spec.homepage = "https://github.com/mattbrictson/pgcli-rails"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 3.1"
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/mattbrictson/pgcli-rails/issues",
