@@ -12,7 +12,7 @@ module Pgcli
 
       def find_cmd_and_exec(commands, *args)
         commands = "pgcli" if commands == "psql"
-        super(commands, *args)
+        super
       end
     end
   end
