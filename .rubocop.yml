@@ -1,5 +1,6 @@
-require:
+plugins:
   - rubocop-minitest
+require:
   - rubocop-packaging
   - rubocop-rake
 
